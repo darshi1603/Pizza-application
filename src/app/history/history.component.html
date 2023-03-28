@@ -1,0 +1,21 @@
+<p>history works!</p>
+<div class="container">
+    <ul>
+        <li *ngFor="let historyItems of cart.items">
+            <div>
+                <img [src]="historyItems.pizza.image" alt="alternate">
+            </div>
+            <div>
+                <a routerLink="/pizza/{{historyItems.pizza.id}}">
+                    {{historyItems.pizza.name}}
+                </a>
+            </div>
+            <div>
+                {{historyItems.quantity}}
+            </div>
+            <div>
+                <i class="fa fa-trash remove-cart" (click)="removeFromCart(historyItems)"></i>
+            </div>
+        </li>
+    </ul>
+</div>

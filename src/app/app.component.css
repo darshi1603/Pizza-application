@@ -1,0 +1,5 @@
+.card card-block{
+    display: grid;
+    width: 18rem;
+    height: 40px;
+}
