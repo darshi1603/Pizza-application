@@ -4,6 +4,11 @@
     align-items: center;
     margin: 1.5rem;
 }
+a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
 ul{
     display: flex;
     flex-direction: column;
@@ -21,14 +26,15 @@ ul li{
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid lightblue;
+    background-color: blanchedalmond;
 }
 ul li:last-child{
   border: none;
 
 }
 ul li img{
-    height: 5rem;
-    width: 5rem;
+    height: 80px;
+    width: 80px;
     border-radius: 100rem;
     object-fit: cover;
 }
@@ -51,6 +57,7 @@ ul .remove-cart{
    border-radius: 1rem;
    padding: -0.5rem;
    opacity: 0.7;;
+   font-size: 20px;
    color: rgb(3, 82, 85);
 }
 ul .remove-cart:hover{
@@ -68,6 +75,8 @@ ul .remove-cart:hover{
     border-radius: 1rem;
     padding: 0.5rem;
     margin: 3.5rem;
+    background-color: blanchedalmond;
+    color: #0c0c0b;
 
 }
 .checkout>div{
@@ -78,6 +87,7 @@ ul .remove-cart:hover{
     justify-content: center;
     margin: 1rem;
     font-size: 1.4rem;
+   
 
 }
 .checkout .food-count{
@@ -90,4 +100,13 @@ ul .remove-cart:hover{
 .checkout .total-price::before{
     content: 'Total Price: ';
     color: gray;
+}
+.chk{
+    background-color: lightcoral;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.chk:hover{
+    background-color: black;
+    color: aliceblue;
 }

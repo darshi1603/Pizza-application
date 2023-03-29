@@ -1,8 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="https://img.freepik.com/free-vector/sticker-template-with-pizza-isolated_1308-62307.jpg?size=626&ext=jpg" alt="Logo" width="30" height="24" ml-5 class="d-inline-block align-text-top">&nbsp;&nbsp;Pizza App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <img
+        src="https://img.freepik.com/free-vector/sticker-template-with-pizza-isolated_1308-62307.jpg?size=626&ext=jpg"
+        alt="Logo"
+        width="30"
+        height="24"
+        ml-5
+        class="d-inline-block align-text-top"
+      />&nbsp;&nbsp;<span style="color: aliceblue">Pizza App</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,22 +38,31 @@
         <li class="nav-item">
           <a class="nav-link" href="history">History</a>
         </li>
-        
-        
       </ul>
-      <!-- <div class="up">&#8593;</div>
-      <div class="down">&#8595;</div> -->
-      <!-- <select id="sort-by" (change)="sort($event)"> -->
-        <select name="" id="">
+      <select style="border-radius: 10px; height: 35px">
         <option value="" selected disabled hidden>Sort By</option>
-        <option value="LowP">Show Low to High Price</option>
-        <option value="HighP">Show High to Low Price</option>
-        <option value="LowS">Show High to Low Star</option>
-        <option value="HighS">Show Low to High Star</option>
-    </select>
+        <option value="Low">Show Low to High Price</option>
+        <option value="High">Show High to Low Price</option>
+        <option value="Low">Show High to Low Star</option>
+        <option value="High">Show Low to High Star</option>
+      </select>
       <form class="d-flex" role="search">
-        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a pizza by name,price,rating ">
-      <button class="btn btn-primary" id="button" type="submit" (click)="onSearch()" (change)="onSearch()">Search</button>
+        <input
+          class="form-control"
+          type="text"
+          name="search"
+          [(ngModel)]="searchText"
+          autocomplete="off"
+          placeholder="Start searching for a pizza by name,price,rating "
+        />
+        <button
+          id="button"
+          type="submit"
+          (click)="onSearch()"
+          (change)="onSearch()"
+        >
+          Search
+        </button>
       </form>
     </div>
   </div>

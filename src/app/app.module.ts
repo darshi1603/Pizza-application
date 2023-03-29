@@ -11,6 +11,8 @@ import {RatingModule} from 'ng-starrating';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
 import { HistoryComponent } from './history/history.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SuccessPageComponent } from './success-page/success-page.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { HistoryComponent } from './history/history.component';
     UserDetailsComponent,
     CartComponent,
     HistoryComponent,
+    CheckoutComponent,
+    SuccessPageComponent,
 
   ],
   imports: [

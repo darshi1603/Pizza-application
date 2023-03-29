@@ -1,41 +1,45 @@
 <div class="container">
-<ul *ngIf="cart && cart.items && cart.items.length">
-    <li *ngFor="let cartItem of cart.items">
-           <div>
-            <img [src]="cartItem.pizza.image" alt="alternate">
-        </div>
-        <div>
-            <a routerLink="/pizza/{{cartItem.pizza.id}}">
-                {{cartItem.pizza.name}}
-            </a>
-        </div>
-        <select #quantitySelect [value]="cartItem.quantity" (change)="changeQuantity(cartItem,quantitySelect.value)">
-            <option [value]="1">1</option>
-            <option [value]="2">2</option>
-             <option [value]="3">3</option>
-             <option [value]="4">4</option>
-             <option [value]="5">5</option>
-        </select>
-        <!-- <button (click)="decrementQty(cartItem)" > -</button>
-        <span value="cartItem.quantity">{{counter}}</span>
-        <button (click)="incrementQty(cartItem)"  > +</button> -->
-        <div>{{(cartItem.quantity)*(cartItem.pizza.price) | currency}}</div>
-        <div>
-            <!-- <button class="remove-cart" (click)="removeFromCart(cartItem)">Remove</button> -->
-            <i class="fa fa-trash remove-cart"  (click)="removeFromCart(cartItem)"></i>
-        </div>
+  <ul *ngIf="cart && cart.items && cart.items.length">
+    <li *ngFor="let cartItem of cart.items; let i = index">
+      <div>
+        <img [src]="cartItem.pizza.image" alt="alternate" />
+      </div>
+      <div>
+        <a routerLink="/pizza/{{ cartItem.pizza.id }}">
+          {{ cartItem.pizza.name }}
+        </a>
+      </div>
+       <div>
+      <input
+        [(ngModel)]="cartItem.quantity"
+        [ngModelOptions]="{ standalone: true }"
+        (change)="changeSubTotal(cartItem)"
+        style="color: black; width: 50px"
+        type="number"
+        min="1"
+        value="1"
+      />
+   </div>
+   <div>
+      <span style="color: black">{{
+        changeSubTotal(cartItem) | currency
+      }}</span></div>
+      <div>
+        <i
+          class="fa fa-trash remove-cart"
+          (click)="removeFromCart(cartItem)"
+        ></i>
+      </div>
     </li>
-</ul>
+  </ul>
 
-
-<div class="checkout">
+  <div class="checkout">
     <div class="food-count">
-        {{cart.items.length}}
+      {{ cart?.items?.length || 0}}
     </div>
     <div class="total-price">
-        {{totalPrice}}
+      {{ totalPrice }}
     </div>
+    <button class="chk" (click)="checkout()">CheckOut</button>
+  </div>
 </div>
-
-<button class="btn btn-primary">Place Order</button>
-

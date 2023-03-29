@@ -7,7 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background-color: #6194d5;
+    background-color: #0c080c;
     justify-content: space-between;
     overflow: auto;
   }
@@ -25,19 +25,28 @@
   color: rgb(255, 255, 255);
   }
   ul li a:hover {
-     background-color: rgb(148, 10, 148);
-     border: 1px solid palevioletred;
+    background-color: blanchedalmond;
+   border-radius: 10px;
+     color: black;
   }
   .form-control{
     width: 400px;
     height: 40px;
     padding: 3px;
     margin: 8px;
+    border-radius: 10px;
   }
   #button{
-    width: 100px;
+    width: 90px;
     height: 43px;
     margin-top: 6px;
+    border-radius: 15px;
+    margin-right: 5px;
+    background-color: blanchedalmond;
+  }
+  #button:hover{
+    background-color: rgb(8, 8, 8);
+    color: rgb(250, 248, 248);
   }
   .up{
     font-size: 30px;

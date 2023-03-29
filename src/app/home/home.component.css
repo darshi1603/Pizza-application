@@ -29,3 +29,15 @@ ul li a{
     display: flex;
     justify-content: space-between;
 }
+.cartBtn{
+    margin-top: -7px; 
+    background-color: blanchedalmond;
+     border: 2px solid black;
+     border-radius: 10px;
+
+
+}
+.cartBtn:hover{
+    background-color: black;
+    color: aliceblue;
+}

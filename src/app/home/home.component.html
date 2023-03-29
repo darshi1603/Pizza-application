@@ -1,23 +1,34 @@
 <ul>
-    <li *ngFor="let pizza of Pizza">
-        <a><img src="{{pizza.image}}" alt=""></a>
-            <div class="content">
-                <div class="name-and-star-class">
-                    <div class="name" style="padding: 5px;">{{pizza.name}}</div>
-                    <star-rating class="star"
-                    [value]="pizza.star"
-                    [totalstars]="5" checkedcolor="red" 
-                    uncheckedcolor="black" 
-                    size="24px"
-                     [readonly]="true">
-                    </star-rating>
-                </div>
-                <div class="size" style="margin-left: 5px; margin-top: -10px;">Size: {{pizza.size}}</div>
-                <div class="price-cart">
-
-                    <div class="price" style="margin-left: 5px;">{{pizza.price|currency}}</div>
-                    <button class="btn" (click)="AddToCart(pizza)" style="margin-top: -7px; background-color: rgb(120, 132, 236);">Add to Cart</button>
-                </div>
-            </div>  
-    </li>
+  <li *ngFor="let pizza of Pizza">
+    <a><img src="{{ pizza.image }}" alt="" /></a>
+    <div class="content">
+      <div class="name-and-star-class">
+        <div class="name" style="padding: 5px">{{ pizza.name }}</div>
+        <star-rating
+          class="star"
+          [value]="pizza.star"
+          [totalstars]="5"
+          checkedcolor="lightCoral"
+          uncheckedcolor="black"
+          size="24px"
+          [readonly]="true"
+        >
+        </star-rating>
+      </div>
+      <div class="size" style="margin-left: 5px; margin-top: -10px">
+        Size: {{ pizza.size }}
+      </div>
+      <div class="price-cart">
+        <div class="price" style="margin-left: 5px">
+          {{ pizza.price | currency }}
+        </div>
+        <button
+          class="cartBtn"
+          (click)="AddToCart(pizza, $event.target, 'Added to Cart')"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </li>
 </ul>

@@ -4,6 +4,7 @@ export class CartItem{
     static quantity: any;
     static pizza: any;
    static price: any;
+   subTotal: number;
     constructor(pizza: Pizzas){
      this.pizza = pizza;
     
