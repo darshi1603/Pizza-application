@@ -40,6 +40,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
     this.cartService.changeQuantity(quantity, cartItem.pizza.id);
     this.setCart();
+    this.updateCart();
   }
 
   changeSubTotal(cartItem: any) {

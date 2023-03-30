@@ -60,4 +60,38 @@ export class HomeComponent implements OnInit {
 
     //this.router.navigateByUrl('cart')
   }
+
+  sort(order: any){
+    if(order=='asc'){
+      this.Pizza.sort(
+        (p1,p2) =>{
+          return p1.price > p2.price ? 1 : -1
+        }
+      )
+    }
+    else{
+      this.Pizza.sort(
+        (p1,p2) =>{
+          return p1.price > p2.price ? -1 : 1
+        }
+      )
+    }
+  }
+
+  sort1(order: any){
+    if(order=='asc1'){
+      this.Pizza.sort(
+        (p1,p2) =>{
+          return p1.star > p2.star ? 1 : -1
+        }
+      )
+    }
+    else{
+      this.Pizza.sort(
+        (p1,p2) =>{
+          return p1.star > p2.star ? -1 : 1
+        }
+      )
+    }
+  }
 }

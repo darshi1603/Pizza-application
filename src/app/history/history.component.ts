@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { Cart } from '../shared/models/Cart';
 import { CartItem } from '../shared/models/CartItem';
+import { HistoryCart } from '../shared/models/historyCart';
 
 @Component({
   selector: 'app-history',
@@ -9,7 +9,10 @@ import { CartItem } from '../shared/models/CartItem';
   styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
-  cart = new Cart();
+  //cart = new Cart();
+  historyCart = new HistoryCart();
+  historyItemArray:any[] = [];
+ 
   //cart!:Cart;
   constructor(private cartService: CartService) {
     //this.setCart()
@@ -20,12 +23,16 @@ export class HistoryComponent implements OnInit {
     this.setCart();
   }
 
-  setCart() {
+  setCart():any {
     //  this.cart = this.cartService.getCart();
-    this.cart = JSON.parse(localStorage.getItem('cart_items') as any);
-  }
-  removeFromCart(cartItem: CartItem) {
-    this.cartService.removeFromCart(cartItem.pizza.id);
-    this.setCart();
+    this.historyItemArray = JSON.parse(localStorage.getItem('history_items') as any);
+    // for (let index = 0; index < this.historyItemArray.length; index++) {
+    //   const element = this.historyItemArray[index];
+    //   this.historyCart.items.push(element);
+      
+    // }
+    // this.historyCart = JSON.parse(localStorage.getItem('history_items') as any)
+
+    
   }
 }

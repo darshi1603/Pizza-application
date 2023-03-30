@@ -1,18 +1,19 @@
 .container{
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    margin: 1.5rem;
+    align-items: left;
+    margin: 10px;
+    --bs-gutter-x: 20.5rem;
 }
 a{
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     color: black;
 }
 ul{
     display: flex;
     flex-direction: column;
-    flex: 3 0;
+    flex: 3 2;
     border: 1px solid pink;
     border-radius: 1rem;
     margin: 0.5rem;
@@ -21,15 +22,25 @@ ul{
     justify-content: space-evenly;
 }
 ul li{
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid lightblue;
     background-color: blanchedalmond;
     color: #0c0c0b;
+    /* height: 300px; */
 
 }
+/* ul li div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+   
+    background-color: blanchedalmond;
+    color: #0c0c0b;
+} */
 ul li:last-child{
   border: none;
 
@@ -45,7 +56,7 @@ ul li div{
     padding: 1rem;
 }
 ul li div:not(:first-child){
-    flex-basis: 18%;
+    flex-basis: 1%;
 }
 ul .remove-cart{
     border: none;
