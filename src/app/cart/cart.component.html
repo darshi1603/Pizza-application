@@ -1,33 +1,30 @@
 <div class="container">
-  <ul *ngIf="cart && cart.items && cart.items.length">
-    <li *ngFor="let cartItem of cart.items; let i = index">
+  <ul>
+    <li *ngFor="let pizza of cartList; let i = index">
       <div>
-        <img [src]="cartItem.pizza.image" alt="alternate" />
+        <img [src]="pizza.image" alt="alternate" />
       </div>
       <div>
-        <a routerLink="/pizza/{{ cartItem.pizza.id }}">
-          {{ cartItem.pizza.name }}
+        <a routerLink="/pizza/{{ pizza.id }}">
+          {{ pizza.name }}
         </a>
       </div>
-       <div>
-      <input
-        [(ngModel)]="cartItem.quantity"
-        [ngModelOptions]="{ standalone: true }"
-        (change)="changeSubTotal(cartItem)"
-        style="color: black; width: 50px"
-        type="number"
-        min="1"
-        value="1"
-      />
-   </div>
-   <div>
-      <span style="color: black">{{
-        changeSubTotal(cartItem) | currency
-      }}</span></div>
+      <div>
+        <span>
+          <button class="btn btn-primary actions" type="button" (click)="decrement(i)">-</button>
+          {{cartMap[i].quantity}}
+          <button class="btn btn-primary actions" type="button" (click)="increment(i)">+</button>
+        </span>
+      </div>
+      <div>
+        <span style="color: black">
+          {{(cartMap[i].quantity)*(pizza.price)}}
+          </span>
+      </div>
       <div>
         <i
           class="fa fa-trash remove-cart"
-          (click)="removeFromCart(cartItem)"
+          (click)="removeFromCart(i)"
         ></i>
       </div>
     </li>
@@ -35,10 +32,10 @@
 
   <div class="checkout">
     <div class="food-count">
-      {{ cart?.items?.length || 0}}
+      {{ cartList?.length || 0}}
     </div>
     <div class="total-price">
-      {{ totalPrice }}
+      {{ getTotalPrice() }}
     </div>
     <button class="chk" (click)="checkout()">CheckOut</button>
   </div>

@@ -4,8 +4,9 @@ Sort Items By Price:
 Sort Items By Popularity: 
 <button class=" mx-1" (click)="sort1('asc1')">&#8593;</button>
 <button class="mx-1 " (click)="sort1('des1')">&#8595;</button>
+<button class="btn btn-primary" (click)="onClick()">Fetch</button>
 <ul>
-  <li *ngFor="let pizza of Pizza">
+  <li *ngFor="let pizza of Pizza;  let i = index">
     <a><img src="{{ pizza.image }}" alt="" /></a>
     <div class="content">
       <div class="name-and-star-class">
@@ -30,7 +31,7 @@ Sort Items By Popularity:
         </div>
         <button
           class="cartBtn"
-          (click)="AddToCart(pizza, $event.target, 'Added to Cart')"
+          (click)="AddToCart(Pizza, $event.target, 'Added to Cart',i)"
         >
           Add to Cart
         </button>

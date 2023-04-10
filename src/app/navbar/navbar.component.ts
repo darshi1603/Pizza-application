@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FoodService } from '../services/food.service';
-import { Pizzas } from '../shared/models/pizza';
+import { Pizzas } from 'src/app/home/home.model';
+import { AppState } from '../store/app.state';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -15,15 +16,15 @@ export class NavbarComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private foodService: FoodService,
+    private store: Store<AppState>,
+    
+    //private foodService: FoodService,
    
   ) {}
   searchText: string = '';
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      if (params['searchText']) this.searchText = params['searchText'];
-    });
+   
   }
 
   onSearch() {

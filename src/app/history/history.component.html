@@ -1,27 +1,37 @@
 <h4 style="text-align: center; text-decoration:underline; margin-top: 4px;">You can see here Previous Orders</h4>
 <div class="container">
   <ul>
-    <li *ngFor="let historyItem of historyItemArray ; let i = index">
-      <!-- {{historyItem.items | json}} -->
-     Order No: <span>{{i+1}}</span>
-      <div   *ngFor="let item of historyItem.items">
-      <!-- <div class="col-auto"> -->
-   <img [src]="item.pizza.image" alt="alternate" />
-      <!-- </div> -->
-      <!-- <div class="col-auto"> -->
-        <a routerLink="/pizza/{{ item.pizza.id }}">
-        Name: {{item.pizza.name }}
-        </a>
-      <!-- </div> -->
-      <!-- <div class="col-auto"> -->
-      Qty: {{ item.quantity }}
-      <!-- </div> -->
-     Price:  <span class="col-auto">{{item.pizza.price | currency}}</span>
-     Size:   <span class="col-auto">{{item.pizza.size}}</span>
+    <li *ngFor="let order of orderList ; let i = index">
+      Order No: <span>{{i+1}}</span>
+       <div   *ngFor="let pizza of getPizzaListFromCartMap(order.addedCart); let j = index"> 
+      <img [src]="pizza.image" alt="alternate" />
+      <a routerLink="/pizza/{{ pizza.id }}">
+        Name: {{pizza.name }}
+      </a>
+      Qty: {{ order.addedCart[j].quantity }}
+      Price: <span class="col-auto">{{pizza.price | currency}}</span>
+      Size: <span class="col-auto">{{pizza.size}}</span>
     </div>
     <div>
-     Total Bill : 0 
+      Total amount : {{getTotalPrice(order)}}
     </div>
     </li>
   </ul>
 </div>
+
+<!-- <div class="order-container">
+  <div class="card" *ngFor="let order of orderList ; let i = index ">
+      <div class="card-header">
+        Order # {{i}}
+      </div>
+      <div class="card-body">
+          <mat-card class="pizza-card" *ngFor="let pizza of getPizzaListFromCartMap(order.addedCart); let j = index" >
+              <span>{{order.addedCart[j].quantity}}x {{pizza.name}}</span>    
+
+            </mat-card>
+      </div>
+      <div class="card-footer text-muted">
+        Total amount : {{getTotalPrice(order)}}
+      </div>
+    </div>
+</div> -->

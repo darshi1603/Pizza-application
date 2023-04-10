@@ -1,5 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as PizzaActions from 'src/app/state/pizza.action';
+import { AppState } from 'src/app/store/app.state';
+import { User } from './user.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,61 +11,31 @@ import { Router } from '@angular/router';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent {
-  constructor(private router: Router){}
-  @ViewChild('f')
-  signUpForm!: NgForm;
-  user={
-    firstname:'',
-    lastname:'',
-    email:'',
-    address:'',
-    phoneNo:'',
-    country:'',
-    state:'',
-    city:'',
-    street:'',
-    pinc:''
-  };
-  
-  // onSubmit(form: NgForm){
-  //   console.log(form);
-  // }
+export class UserDetailsComponent implements OnInit {
 
-  onSubmit(){
-    //console.log(form)  //Accessing the form with viewChild
-    //Extract form data
-    let submitted = true;
-    if(submitted){
-      this.router.navigate(['home']);
+  userForm: FormGroup;
+  constructor(private store: Store<AppState>, private router: Router) { }
+
+  ngOnInit(): void {
+    this.userForm= new FormGroup({
+      'firstname': new FormControl(null, [Validators.required]),
+      'lastname': new FormControl(null, [Validators.required]),
+      'contact': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required]),
+      'address': new FormControl(null, [Validators.required])
+    })
+  }
+  onSubmit() {
+    const user: User = {
+      firstname: this.userForm.value['firstname'],
+      lastname: this.userForm.value['lastname'],
+      email: this.userForm.value['email'],
+      address: this.userForm.value['address'],
+      contact: this.userForm.value['contact']
+
     }
-    this.user.firstname = this.signUpForm.value.userData.FirstName;
-    this.user.lastname= this.signUpForm.value.userData.LastName;
-    this.user.email = this.signUpForm.value.userData.email
-    this.user.address = this.signUpForm.value.userData.Address;
-    this.user.phoneNo = this.signUpForm.value.userData.PhoneNumber;
-    this.user.country = this.signUpForm.value.userData.country;
-    this.user.state = this.signUpForm.value.userData.state;
-    this.user.city = this.signUpForm.value.userData.city;
-    this.user.street = this.signUpForm.value.userData.street;
-    this.user.pinc = this.signUpForm.value.userData.pinc;
-
-    localStorage.setItem("email", this.user.firstname);
-    localStorage.setItem("userDetails", JSON.stringify(this.user));
-
-    // localStorage.setItem("LastName", this.user.lastname);
-    // localStorage.setItem("Email", this.user.email);
-    // localStorage.setItem("Address", this.user.address);
-    // localStorage.setItem("phoneNo", this.user.phoneNo);
-    // localStorage.setItem("Country", this.user.country);
-    // localStorage.setItem("State", this.user.state);
-    // localStorage.setItem("City", this.user.city);
-    // localStorage.setItem("Street", this.user.street);
-    // localStorage.setItem("Pincode", this.user.pinc);
-  
-
-    //reset form data
-    this.signUpForm.reset();
-
+    
+    this.store.dispatch(PizzaActions.addUser({ user: user }))
+    this.router.navigate(['home'])
   }
 }
