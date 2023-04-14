@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Pizzas } from 'src/app/home/home.model';
-import { AppState } from '../store/app.state';
-import { Store } from '@ngrx/store';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,26 +7,14 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  pizza: any;
-  Pizzas: any;
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private store: Store<AppState>,
-    
-    //private foodService: FoodService,
-   
-  ) {}
-  searchText: string = '';
+  constructor(private router: Router) {}
+  searchText: any;
 
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 
   onSearch() {
     if (this.searchText) {
       this.router.navigateByUrl('/search/' + this.searchText);
     }
   }
-
 }

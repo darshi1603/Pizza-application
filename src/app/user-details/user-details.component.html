@@ -2,7 +2,7 @@
   <div class="col-md-6 offset-md-3">
     <h3>Login</h3>
     <hr />
-    <form action="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label for="Email">FirstName</label>
         <input type="text" class="form-control" formControlName="firstname" />

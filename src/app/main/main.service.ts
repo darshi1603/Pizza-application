@@ -6,7 +6,9 @@ import { Pizzas } from '../home/home.model';
 import { Cart } from '../cart/cart.model';
 import { Order } from '../history/history.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MainService {
   constructor(private http: HttpClient) {}
   selectedPizzaList = new BehaviorSubject<Pizzas[]>([]);
@@ -16,7 +18,7 @@ export class MainService {
       .get<Pizzas[]>(
         'https://pizza-app-514cb-default-rtdb.firebaseio.com/pizzaList.json'
       )
-      .pipe(map((response) => response));
+      .pipe(map((res) => res));
   }
   setPizzaList(Pizza: Pizzas[]) {
     return this.http

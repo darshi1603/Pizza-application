@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { selectPizzaList } from '../state/pizza.selector';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
 import { MainService } from 'src/app/main/main.service';
 import { Pizzas } from 'src/app/home/home.model';
 import {
-  clearCart,
   decreaseCount,
   fetchCart,
   removeCartItem,
@@ -15,7 +13,6 @@ import {
   updateCart,
 } from 'src/app/state/pizza.action';
 import { selectUser } from 'src/app/state/pizza.selector';
-import { UserDetailsComponent } from '../user-details/user-details.component';
 import { User } from '../user-details/user.model';
 import { Cart } from 'src/app/cart/cart.model';
 import { Order } from '../history/history.model';
@@ -39,7 +36,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //this.store.dispatch(fetchCart());
+    this.store.dispatch(fetchCart());
     this.store.select('pizzaListStore').subscribe((state) => {
       this.cartMap = state.cartMap || [];
       this.Pizza = state.Pizza;
@@ -89,9 +86,7 @@ export class CartComponent implements OnInit, OnDestroy {
         if (addedUser) {
           if (this.cartMap.length) {
             let order: Order = { addedCart: this.cartMap };
-            //this.store.dispatch(clearCart());
             this.mainService.fetchCartOrder().subscribe(res => {
-    
               this.orderList = res || [];
               this.orderList.push(order);
               this.mainService.saveCartOrder(this.orderList).subscribe(res => {

@@ -1,16 +1,12 @@
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { MainService } from 'src/app/main/main.service';
 import { updateCart, fetchPizzaList } from 'src/app/state/pizza.action';
 import { State } from 'src/app/state/pizza.reducer';
 import { selectPizzaList } from 'src/app/state/pizza.selector';
 import { Pizzas } from 'src/app/home/home.model';
 import * as PizzaActions from 'src/app/state/pizza.action';
-import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +14,6 @@ import { pipe } from 'rxjs';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  // [x: string]: any;
 
   searchText: any;
   Pizza: Pizzas[] = [];
@@ -27,9 +22,6 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private mainService: MainService,
-    private http: HttpClient,
     private store: Store<AppState>
   ) {}
 
@@ -48,7 +40,7 @@ export class HomeComponent implements OnInit {
         //this.Pizza = this.Pizza.filter(pizza=>pizza.price(params['searchItem']));
         if (this.Pizza.length == 0) {
           this.Pizza = this.Pizza.filter((pizza) =>
-            pizza.price.toString().includes(params['searchItem'])
+            pizza.price.toString().includes(params['searchItem'].toString())
           );
 
           if (this.Pizza.length == 0) {
@@ -61,7 +53,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  AddToCart(Pizza, element, text, id: number) {
+  AddToCart( element, text, id: number) {
    
     element.textContent = text;
     this.store.dispatch(updateCart({ name: this.Pizza[id].name }));

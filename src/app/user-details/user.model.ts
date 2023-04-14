@@ -4,5 +4,4 @@ export interface User{
     address : string;
     contact : number;
     email : string;
-
 }

@@ -18,7 +18,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { PizzaEffects } from './state/pizza.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
-import { MainService } from './main/main.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { MainService } from './main/main.service';
     CheckoutComponent,
     SuccessPageComponent,
     MainComponent,
- 
   ],
   imports: [
     BrowserModule,
@@ -43,9 +41,8 @@ import { MainService } from './main/main.service';
     ReactiveFormsModule,
     EffectsModule.forRoot([PizzaEffects]),
     HttpClientModule
-  
   ],
-  providers: [MainService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

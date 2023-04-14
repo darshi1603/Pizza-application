@@ -11,7 +11,6 @@ import { clearCart } from '../state/pizza.action';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
-  providers: [CartComponent],
 })
 export class CheckoutComponent implements OnInit {
   total: number = 0;
@@ -21,7 +20,6 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private router: Router, private store: Store<AppState>) {}
   ngOnInit(): void {
-  
     this.store.select('pizzaListStore').subscribe((state) => {
       this.cartMap = state.cartMap || [];
       this.Pizza = state.Pizza;
@@ -35,7 +33,7 @@ export class CheckoutComponent implements OnInit {
       });
     });
   }
-  
+
   getTotalPrice() {
     this.total = 0;
     for (let i = 0; i < this.cartList.length; i++) {
